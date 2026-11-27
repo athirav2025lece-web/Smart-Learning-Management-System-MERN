@@ -15,7 +15,7 @@ function Navbar({ studentName, searchQuery, onSearchChange }) {
             {/* Logo */}
             <div className="logo">
                 <GraduationCap size={30} />
-                <h2>SmartLearn</h2>
+                <h2>SmartLearning</h2>
             </div>
 
             {/* Search Box */}

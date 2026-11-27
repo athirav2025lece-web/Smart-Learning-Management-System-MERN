@@ -1,5 +1,6 @@
 
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 import {
     LayoutDashboard,
@@ -10,15 +11,15 @@ import {
     Settings
 } from "lucide-react";
 
-function Sidebar({ activePage, setActivePage }) {
+function Sidebar() {
 
     const menuItems = [
-        { name: "Dashboard", icon: LayoutDashboard },
-        { name: "My Courses", icon: BookOpen },
-        { name: "Assignments", icon: ClipboardList },
-        { name: "Schedule", icon: Calendar },
-        { name: "Progress", icon: ChartBar },
-        { name: "Settings", icon: Settings }
+        { name: "Dashboard", path: "/dashboard", icon: LayoutDashboard },
+        { name: "My Courses", path: "/courses", icon: BookOpen },
+        { name: "Assignments", path: "/assignments", icon: ClipboardList },
+        { name: "Schedule", path: "/schedule", icon: Calendar },
+        { name: "Progress", path: "/progress", icon: ChartBar },
+        { name: "Settings", path: "/settings", icon: Settings }
     ];
 
     return (
@@ -30,16 +31,16 @@ function Sidebar({ activePage, setActivePage }) {
                 const Icon = item.icon;
 
                 return (
-                    <div
+                    <NavLink
                         key={item.name}
-                        className={`sidebar-item ${
-                            activePage === item.name ? "active" : ""
-                        }`}
-                        onClick={() => setActivePage(item.name)}
+                        to={item.path}
+                        className={({ isActive }) =>
+                            `sidebar-item ${isActive ? "active" : ""}`
+                        }
                     >
                         <Icon size={20} />
                         <span>{item.name}</span>
-                    </div>
+                    </NavLink>
                 );
             })}
 
